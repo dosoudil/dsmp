@@ -172,7 +172,7 @@ public class RequestHandler extends Thread
         URL url = new URL (downloadURL);
         url = config.getMirror (url);
         
-        if (!"http".equals(url.getProtocol()))
+        if (!"http".equals(url.getProtocol()) && !"https".equals(url.getProtocol()))
             throw new IOException ("Can only handle HTTP requests, got "+downloadURL);
         
         File f = getPatchFile(url);

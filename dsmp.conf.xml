@@ -21,6 +21,10 @@
      settings.xml) and the repository IDs (from pom.xml) don't match.
      Or what do you do if the POM says to download 
 -->
+<!-- Redirect all requests to central via http to central via https.
+     Required after January 15, 2020 when central no longer support http.
+     While https to proxy is not supported, http in settings.xml is required. -->
+<redirect from="http://repo1.maven.org" to="https://repo1.maven.org" />
 <!-- Redirect all requests to central to the closest mirror -->
 <!--
 <redirect from="http://repo1.maven.org/maven2" to="http://maven.sateh.com/maven2" />
