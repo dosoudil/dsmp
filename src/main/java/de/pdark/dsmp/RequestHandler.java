@@ -76,7 +76,7 @@ public class RequestHandler extends Thread
             {
                 String downloadURL = null;
                 StringBuffer fullRequest = new StringBuffer (1024);
-                while ((line = readLine ()) != null)
+                while ((line = readLine (headOnly)) != null)
                 {
                     if (line.length() == 0)
                         break;
@@ -351,8 +351,12 @@ public class RequestHandler extends Thread
 
     private BufferedInputStream in;
     
-    private String readLine () throws IOException
+    private String readLine (boolean headOnly) throws IOException
     {
+        if (headOnly) {
+            return null;
+        }
+
         if (in == null)
             in = new BufferedInputStream (clientSocket.getInputStream());
         
